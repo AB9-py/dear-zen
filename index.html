@@ -57,18 +57,23 @@
     }
 
     button {
-      padding: 14px 34px;
-      font-size: 1.1rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-      transition: transform 0.2s ease;
-    }
+  padding: 10px 52px;      /* less height, more width */
+  min-width: 130px;        /* ensures wide pill shape */
+  font-size: 0.95rem;      /* smaller text to match envelope */
+  font-weight: 500;
 
-    button:hover {
-      transform: scale(1.05);
-    }
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.2s ease;
+}
+
+
+ button:hover {
+  transform: scale(1.03);
+}
+
 
     #yes {
       background: #ff9eb5;
@@ -95,18 +100,19 @@
 
     /* ENVELOPE IMAGE CARD */
     .envelope-card {
-      background-image: url("images/frog-envelope.png");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
+  background-image: url("images/frog-envelope.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 
-      width: 360px;
-      height: 520px;
+  width: 400px;   /* bigger */
+  height: 580px;  /* taller */
 
-      position: relative;
-      box-shadow: none;
-      background-color: transparent;
-    }
+  position: relative;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 
     /* BUTTONS OVER IMAGE */
     .btn-overlay {
