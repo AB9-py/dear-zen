@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Just a sec...</title>
+  <title>Loading...</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background: #0b0b0b;
       color: white;
       display: flex;
@@ -25,24 +25,28 @@
       display: block;
     }
 
-    .loading {
-      font-size: 1.4rem;
-      opacity: 0.8;
+    h1 {
+      font-size: 3rem;
     }
 
-    .soft {
+    p {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .box {
       background: linear-gradient(135deg, #1a1a2e, #16213e);
-      padding: 40px;
-      border-radius: 12px;
+      padding: 45px;
+      border-radius: 16px;
     }
 
     button {
-      padding: 12px 25px;
-      font-size: 1rem;
+      padding: 14px 30px;
+      font-size: 1.2rem;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       cursor: pointer;
-      margin: 10px;
+      margin: 12px;
     }
 
     #yes {
@@ -55,54 +59,65 @@
       color: white;
       position: absolute;
     }
+
+    img {
+      width: 140px;
+      margin: 20px 0;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- LOADING SCREEN -->
+  <!-- LOADING -->
   <div id="loading" class="screen active">
-    <div class="loading">
-      Scanning emotional damage...<br><br>
-      Please wait 💭
-    </div>
+    <h1>Initializing Valorant client…</h1>
+    <p>Checking vibes…<br>Calibrating aim…</p>
   </div>
 
-  <!-- SOFT MESSAGE -->
-  <div id="message" class="screen soft">
+  <!-- MESSAGE -->
+  <div id="message" class="screen box">
+    <img src="https://media.tenor.com/0AVbKGY_MxMAAAAC/heart-love.gif">
     <p>
-      Hey.<br><br>
-      I know things have been heavy lately.<br>
-      And I know you didn’t deserve how things ended.
+      Okay but real talk for one second.<br><br>
+      It’s kinda crazy how in such a short time,
+      I ended up being genuinely grateful
+      that I got to meet you.
       <br><br>
-      This isn’t meant to pressure you or make things weird.
+      You’re easy to talk to,
+      fun to be around,
+      and somehow already feel familiar.
       <br><br>
-      I just wanted to do something small,
-      something gentle,
-      something that might make you smile.
+      I really hope this friendship?
+      Yeah — I hope it continues.
     </p>
-    <br>
-    <button onclick="showQuestion()">Continue</button>
+    <button onclick="showQuestion()">Continue 🎮</button>
   </div>
 
   <!-- QUESTION -->
-  <div id="question" class="screen soft">
-    <h2>Will you be my Valorant Valentine? 🎮❤️</h2>
-    <br>
-    <button id="yes" onclick="showYes()">Yes</button>
-    <button id="no">No</button>
+  <div id="question" class="screen box">
+    <h1>So…</h1>
+    <p>
+      Wanna be my<br>
+      <strong>Valorant Valentine</strong>? 💘🎮
+      <br><br>
+      (Duo queue. Bad aim. Good vibes.)
+    </p>
+    <button id="yes" onclick="showYes()">YES 😭💖</button>
+    <button id="no">No 🙄</button>
   </div>
 
-  <!-- FINAL YES SCREEN -->
-  <div id="final" class="screen soft">
-    <h2>Yay 🥹💖</h2>
+  <!-- FINAL -->
+  <div id="final" class="screen box">
+    <img src="https://media.tenor.com/2roX3uxz_68AAAAC/cute-cat.gif">
+    <h1>LET’S GOOO 🥹💞</h1>
     <p>
-      No expectations.<br>
-      No pressure.<br><br>
-      Just good games, bad aim,<br>
-      and someone on your team.
+      Guess it’s settled then.<br><br>
+      You bring the vibes,<br>
+      I’ll bring the questionable plays,
+      and we’ll blame lag together.
       <br><br>
-      I’m really glad you’re here.
+      Duo queue unlocked 🔓🎮
     </p>
   </div>
 
@@ -110,7 +125,7 @@
     setTimeout(() => {
       document.getElementById("loading").classList.remove("active");
       document.getElementById("message").classList.add("active");
-    }, 3000);
+    }, 2500);
 
     function showQuestion() {
       document.getElementById("message").classList.remove("active");
@@ -120,8 +135,8 @@
     const noBtn = document.getElementById("no");
 
     noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
