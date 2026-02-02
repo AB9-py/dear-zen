@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Loading...</title>
+  <meta charset="UTF-8">
+  <title>One sec…</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #0b0b0b;
-      color: white;
+      background: #fff1f4;
+      color: #3a3a3a;
+      font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,52 +24,84 @@
     }
 
     .screen {
-      display: none;
+      position: absolute;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
       max-width: 90%;
     }
 
     .active {
-      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
-    h1 {
-      font-size: 3rem;
+    .card {
+      background: #fff7f9;
+      padding: 45px;
+      border-radius: 26px;
+      box-shadow: 0 20px 45px rgba(255, 158, 181, 0.25);
     }
+
+    h1, h2 {
+      font-family: 'Dancing Script', cursive;
+      color: #ff7fa2;
+      margin-bottom: 20px;
+    }
+
+    h1 { font-size: 3.2rem; }
+    h2 { font-size: 2.6rem; }
 
     p {
-      font-size: 1.6rem;
-      line-height: 1.5;
-    }
-
-    .box {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      padding: 45px;
-      border-radius: 16px;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
     }
 
     button {
-      padding: 14px 30px;
-      font-size: 1.2rem;
+      padding: 14px 34px;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 30px;
+      border-radius: 999px;
       cursor: pointer;
-      margin: 12px;
+      font-family: 'Poppins', sans-serif;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
     }
 
     #yes {
-      background-color: #ff7aa2;
+      background: #ff9eb5;
       color: white;
     }
 
     #no {
-      background-color: #444;
-      color: white;
+      background: #f0f0f0;
+      color: #555;
       position: absolute;
+      transition: left 0.6s ease, top 0.6s ease;
     }
 
-    img {
+    .frog {
       width: 140px;
-      margin: 20px 0;
+      margin-bottom: 20px;
+    }
+
+    /* Loading dots */
+    .dots::after {
+      content: '';
+      animation: dots 1.5s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+      0% { content: ''; }
+      33% { content: '.'; }
+      66% { content: '..'; }
+      100% { content: '...'; }
     }
   </style>
 </head>
@@ -71,80 +110,87 @@
 
   <!-- LOADING -->
   <div id="loading" class="screen active">
-    <h1>Initializing Valorant client…</h1>
-    <p>Checking vibes…<br>Calibrating aim…</p>
+    <h1>Queueing for duo</h1>
+    <p class="dots">Locking agents</p>
   </div>
 
   <!-- MESSAGE -->
-  <div id="message" class="screen box">
-    <img src="https://media.tenor.com/0AVbKGY_MxMAAAAC/heart-love.gif">
+  <div id="message" class="screen card">
     <p>
-      Okay but real talk for one second.<br><br>
-      It’s kinda crazy how in such a short time,
-      I ended up being genuinely grateful
+      It’s kinda wild how fast this happened,
+      but I’m genuinely really grateful
       that I got to meet you.
       <br><br>
-      You’re easy to talk to,
-      fun to be around,
-      and somehow already feel familiar.
+      From random conversations to
+      actual laughs in no time —
+      you’re someone I really like having around.
       <br><br>
-      I really hope this friendship?
-      Yeah — I hope it continues.
+      And yeah… I hope this keeps going.
     </p>
     <button onclick="showQuestion()">Continue 🎮</button>
   </div>
 
   <!-- QUESTION -->
-  <div id="question" class="screen box">
-    <h1>So…</h1>
+  <div id="question" class="screen card">
+    <h2>So…</h2>
     <p>
-      Wanna be my<br>
-      <strong>Valorant Valentine</strong>? 💘🎮
+      Raze energy.<br>
+      Jett confidence.<br>
+      Viper brains.<br>
+      Chamber drip.
       <br><br>
-      (Duo queue. Bad aim. Good vibes.)
+      Will you be my<br>
+      <strong>Valorant Valentine</strong>? 💗🎮
     </p>
-    <button id="yes" onclick="showYes()">YES 😭💖</button>
+    <button id="yes" onclick="showYes()">Yes 💞</button>
     <button id="no">No 🙄</button>
   </div>
 
   <!-- FINAL -->
-  <div id="final" class="screen box">
-    <img src="https://media.tenor.com/2roX3uxz_68AAAAC/cute-cat.gif">
-    <h1>LET’S GOOO 🥹💞</h1>
+  <div id="final" class="screen card">
+    <img class="frog" src="https://i.imgur.com/4AiXzf8.png" alt="cute frog">
+    <h1>LET’S GOOO 🥹</h1>
     <p>
-      Guess it’s settled then.<br><br>
-      You bring the vibes,<br>
-      I’ll bring the questionable plays,
-      and we’ll blame lag together.
+      Frog approved ✔️<br><br>
+      Looks like it’s official —
+      duo queue with good vibes,
+      bad aim,
+      and elite company.
       <br><br>
-      Duo queue unlocked 🔓🎮
+      Valentine secured 💗🎮
     </p>
   </div>
 
   <script>
+    const screens = ["loading", "message", "question", "final"];
+
+    function showScreen(id) {
+      screens.forEach(s => {
+        document.getElementById(s).classList.remove("active");
+      });
+      document.getElementById(id).classList.add("active");
+    }
+
     setTimeout(() => {
-      document.getElementById("loading").classList.remove("active");
-      document.getElementById("message").classList.add("active");
+      showScreen("message");
     }, 2500);
 
     function showQuestion() {
-      document.getElementById("message").classList.remove("active");
-      document.getElementById("question").classList.add("active");
+      showScreen("question");
+    }
+
+    function showYes() {
+      showScreen("final");
     }
 
     const noBtn = document.getElementById("no");
 
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
+    noBtn.addEventListener("mouseenter", () => {
+      const x = Math.random() * (window.innerWidth - 180);
+      const y = Math.random() * (window.innerHeight - 80);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
-
-    function showYes() {
-      document.getElementById("question").classList.remove("active");
-      document.getElementById("final").classList.add("active");
-    }
   </script>
 
 </body>
