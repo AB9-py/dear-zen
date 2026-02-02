@@ -161,7 +161,7 @@
     </p>
   </div>
 
-  <script>
+<script>
   // screen handling
   const screens = ["loading", "message", "question", "final"];
 
@@ -172,10 +172,66 @@
     document.getElementById(id).classList.add("active");
   }
 
-  // auto move from loading to message
-  setTimeout(() => {
-    showScreen("message");
-  }, 2500);
+  // wait until page is fully loaded
+  window.onload = () => {
+    // auto move from loading to message
+    setTimeout(() => {
+      showScreen("message");
+    }, 2500);
+
+    // YES button
+    const yesBtn = document.getElementById("yes");
+    yesBtn.addEventListener("click", showYes);
+
+    // NO button
+    const noBtn = document.getElementById("no");
+
+    const noMessages = [
+      "nah fr?? 😭",
+      "okay that kinda hurt 💔",
+      "are you sureeee? 👀",
+      "we’d be a cute duo tho 🥺",
+      "raze + jett combo goes hard ngl 💥",
+      "viper & chamber approve this 😌",
+      "please be my valentine naaa 💗",
+      "okay last last chance 😭",
+      "Error 404: NO button not found"
+    ];
+
+    const yesReactions = [
+      "Yes 💞",
+      "YES?? 👀",
+      "YES PLEASE 😳",
+      "OKAY JUST CLICK ME 😭",
+      "YES YES YES 💗"
+    ];
+
+    let noCount = 0;
+
+    noBtn.addEventListener("click", () => {
+      if (noCount < noMessages.length) {
+        noBtn.textContent = noMessages[noCount];
+      }
+
+      if (noCount % 2 === 1) {
+        const idx = Math.floor(noCount / 2);
+        if (idx < yesReactions.length) {
+          yesBtn.textContent = yesReactions[idx];
+          yesBtn.style.transform = "scale(1.12)";
+          setTimeout(() => {
+            yesBtn.style.transform = "scale(1)";
+          }, 200);
+        }
+      }
+
+      if (noMessages[noCount] === "Error 404: NO button not found") {
+        noBtn.disabled = true;
+        noBtn.style.opacity = "0.5";
+      }
+
+      noCount++;
+    });
+  };
 
   function showQuestion() {
     showScreen("question");
@@ -184,61 +240,8 @@
   function showYes() {
     showScreen("final");
   }
-
-  // ---- NO button logic ----
-  const noMessages = [
-    "nah fr?? 😭",
-    "okay that kinda hurt 💔",
-    "are you sureeee? 👀",
-    "we’d be a cute duo tho 🥺",
-    "raze + jett combo goes hard ngl 💥",
-    "viper & chamber approve this 😌",
-    "please be my valentine naaa 💗",
-    "okay last last chance 😭",
-    "Error 404: NO button not found"
-  ];
-
-  // YES button reactions
-  const yesReactions = [
-    "Yes 💞",
-    "YES?? 👀",
-    "YES PLEASE 😳",
-    "OKAY JUST CLICK ME 😭",
-    "YES YES YES 💗"
-  ];
-
-  let noCount = 0;
-
-  const noBtn = document.getElementById("no");
-  const yesBtn = document.getElementById("yes");
-
-  function noClicked() {
-    // update NO button text
-    if (noCount < noMessages.length) {
-      noBtn.textContent = noMessages[noCount];
-    }
-
-    // YES button reacts every 2 NO clicks
-    if (noCount % 2 === 1) {
-      const reactionIndex = Math.floor(noCount / 2);
-      if (reactionIndex < yesReactions.length) {
-        yesBtn.textContent = yesReactions[reactionIndex];
-        yesBtn.style.transform = "scale(1.12)";
-        setTimeout(() => {
-          yesBtn.style.transform = "scale(1)";
-        }, 200);
-      }
-    }
-
-    // final NO state
-    if (noMessages[noCount] === "Error 404: NO button not found") {
-      noBtn.disabled = true;
-      noBtn.style.opacity = "0.5";
-    }
-
-    noCount++;
-  }
 </script>
+
 
 
 </body>
