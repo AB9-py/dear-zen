@@ -162,29 +162,25 @@
   </div>
 
 <script>
-  // screen handling
   const screens = ["loading", "message", "question", "final"];
 
   function showScreen(id) {
-    screens.forEach(s => {
-      document.getElementById(s).classList.remove("active");
-    });
+    screens.forEach(s =>
+      document.getElementById(s).classList.remove("active")
+    );
     document.getElementById(id).classList.add("active");
   }
 
-  // wait until page is fully loaded
   window.onload = () => {
-    // auto move from loading to message
+    // auto loading → message
     setTimeout(() => {
       showScreen("message");
     }, 2500);
 
-    // YES button
     const yesBtn = document.getElementById("yes");
-    yesBtn.addEventListener("click", showYes);
-
-    // NO button
     const noBtn = document.getElementById("no");
+
+    yesBtn.addEventListener("click", showYes);
 
     const noMessages = [
       "nah fr?? 😭",
@@ -213,6 +209,7 @@
         noBtn.textContent = noMessages[noCount];
       }
 
+      // YES reacts every 2 NO clicks
       if (noCount % 2 === 1) {
         const idx = Math.floor(noCount / 2);
         if (idx < yesReactions.length) {
@@ -224,9 +221,10 @@
         }
       }
 
+      // final NO state
       if (noMessages[noCount] === "Error 404: NO button not found") {
         noBtn.disabled = true;
-        noBtn.style.opacity = "0.5";
+        noBtn.style.opacity = "0.6";
       }
 
       noCount++;
@@ -241,8 +239,6 @@
     showScreen("final");
   }
 </script>
-
-
 
 </body>
 </html>
