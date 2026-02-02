@@ -43,10 +43,15 @@
       text-align: center;
       max-width: 90%;
     }
+#final.card {
+  padding-top: 32px;     /* reduces top space */
+  padding-bottom: 40px;
+}
+
 .frog {
-    width: 200px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.15));
+    width: 220px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 12px 10px rgba(0, 0, 0, 0.35));
   }
 
 
@@ -58,9 +63,13 @@
     }
 
     p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       line-height: 1.6;
     }
+#final p {
+  margin-top: 12px;
+}
+
 
     button {
   padding: 4px 72px;      /* less height, more width */
@@ -123,7 +132,7 @@
     /* BUTTONS OVER IMAGE */
     .btn-overlay {
   position: absolute;
-  bottom: 160px;          /* moves buttons UP */
+  bottom: 175px;          /* moves buttons UP */
   left: 50%;              /* nudges buttons LEFT */
   transform: translateX(-50%);
   display: flex;
@@ -171,7 +180,7 @@
   <!-- FINAL -->
   <div id="final" class="screen card">
     <img class="frog" src="images/frog-rose.png" alt="cute frog holding a rose">
-    <h1>YAY! 🌸</h1>
+    <h1>YAY!</h1>
     <p>
       Looks like it’s official.
       <br><br>
