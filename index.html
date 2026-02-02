@@ -12,7 +12,7 @@
   <style>
     body {
       margin: 0;
-      background: #fff1f4;
+      background: #ffe4ea;
       color: #3a3a3a;
       font-family: 'Poppins', sans-serif;
       display: flex;
@@ -39,7 +39,7 @@
     }
 
     .card {
-      background: #fff7f9;
+      background: #ffffff;
       padding: 45px;
       border-radius: 26px;
       box-shadow: 0 20px 45px rgba(255, 158, 181, 0.25);
@@ -162,36 +162,84 @@
   </div>
 
   <script>
-    const screens = ["loading", "message", "question", "final"];
+  // screen handling
+  const screens = ["loading", "message", "question", "final"];
 
-    function showScreen(id) {
-      screens.forEach(s => {
-        document.getElementById(s).classList.remove("active");
-      });
-      document.getElementById(id).classList.add("active");
-    }
-
-    setTimeout(() => {
-      showScreen("message");
-    }, 2500);
-
-    function showQuestion() {
-      showScreen("question");
-    }
-
-    function showYes() {
-      showScreen("final");
-    }
-
-    const noBtn = document.getElementById("no");
-
-    noBtn.addEventListener("mouseenter", () => {
-      const x = Math.random() * (window.innerWidth - 180);
-      const y = Math.random() * (window.innerHeight - 80);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+  function showScreen(id) {
+    screens.forEach(s => {
+      document.getElementById(s).classList.remove("active");
     });
-  </script>
+    document.getElementById(id).classList.add("active");
+  }
+
+  // auto move from loading to message
+  setTimeout(() => {
+    showScreen("message");
+  }, 2500);
+
+  function showQuestion() {
+    showScreen("question");
+  }
+
+  function showYes() {
+    showScreen("final");
+  }
+
+  // ---- NO button logic ----
+  const noMessages = [
+    "nah fr?? 😭",
+    "okay that kinda hurt 💔",
+    "are you sureeee? 👀",
+    "we’d be a cute duo tho 🥺",
+    "raze + jett combo goes hard ngl 💥",
+    "viper & chamber approve this 😌",
+    "please be my valentine naaa 💗",
+    "okay last last chance 😭",
+    "Error 404: NO button not found"
+  ];
+
+  // YES button reactions
+  const yesReactions = [
+    "Yes 💞",
+    "YES?? 👀",
+    "YES PLEASE 😳",
+    "OKAY JUST CLICK ME 😭",
+    "YES YES YES 💗"
+  ];
+
+  let noCount = 0;
+
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+
+  function noClicked() {
+    // update NO button text
+    if (noCount < noMessages.length) {
+      noBtn.textContent = noMessages[noCount];
+    }
+
+    // YES button reacts every 2 NO clicks
+    if (noCount % 2 === 1) {
+      const reactionIndex = Math.floor(noCount / 2);
+      if (reactionIndex < yesReactions.length) {
+        yesBtn.textContent = yesReactions[reactionIndex];
+        yesBtn.style.transform = "scale(1.12)";
+        setTimeout(() => {
+          yesBtn.style.transform = "scale(1)";
+        }, 200);
+      }
+    }
+
+    // final NO state
+    if (noMessages[noCount] === "Error 404: NO button not found") {
+      noBtn.disabled = true;
+      noBtn.style.opacity = "0.5";
+    }
+
+    noCount++;
+  }
+</script>
+
 
 </body>
 </html>
