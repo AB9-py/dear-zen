@@ -58,6 +58,8 @@
       font-size: 1.4rem;
       line-height: 1.6;
       margin-bottom: 25px;
+      word-break: normal;
+      overflow-wrap: break-word;
     }
 
     button {
@@ -83,11 +85,7 @@
       background: #f0f0f0;
       color: #555;
       max-width: 240px;
-      padding: 12px 20px;
-      text-align: center;
       white-space: normal;
-      word-break: normal;
-      overflow-wrap: break-word;
     }
 
     .btn-row {
@@ -99,12 +97,7 @@
       flex-wrap: wrap;
     }
 
-    .frog {
-      width: 140px;
-      margin-bottom: 20px;
-    }
-
-    /* Loading dots */
+    /* LOADING DOTS */
     .dots::after {
       content: '';
       animation: dots 1.5s steps(3, end) infinite;
@@ -115,6 +108,27 @@
       33% { content: '.'; }
       66% { content: '..'; }
       100% { content: '...'; }
+    }
+
+    /* ENVELOPE QUESTION CARD */
+    .envelope-card {
+      background-image: url("images/frog-envelope.png");
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+      padding-top: 280px;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .envelope-content {
+      padding: 0 20px;
+    }
+
+    /* FINAL FROG */
+    .frog {
+      width: 140px;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -130,59 +144,49 @@
   <!-- MESSAGE -->
   <div id="message" class="screen card">
     <p>
-      It’s kinda wild how fast this happened,
-      but I’m genuinely really grateful
-      that I got to meet you.
+      It’s kinda wild how fast this happened.
+      One moment we were strangers,
+      and suddenly you’re someone I genuinely enjoy talking to.
       <br><br>
-      From random conversations to
-      actual laughs in no time —
-      you’re someone I really like having around.
+      You bring good energy, easy laughs,
+      and honestly — I’m really glad our paths crossed.
       <br><br>
-      And yeah… I hope this keeps going.
+      Here’s something small, just for you ;)
     </p>
     <button onclick="showQuestion()">Continue 🎮</button>
   </div>
 
   <!-- QUESTION -->
-  <div id="question" class="screen card">
+  <div id="question" class="screen card envelope-card">
+    <div class="envelope-content">
+      <p>
+        Okay, hear me out.
+        <br><br>
+        You bring the vibes,<br>
+        I’ll bring the questionable plays,
+        <br><br>
+        and we’ll pretend lag is the problem.
+        <br><br>
+        Valentine duo? 😌🎮
+      </p>
 
-  <img
-    src="images/frog-envelope.png"
-    alt="cute frog peeking from envelope"
-    class="envelope-img"
-  >
-
-  <p>
-    Okay, hear me out.
-    <br><br>
-    You bring the vibes,<br>
-    I’ll bring the questionable plays,
-    <br><br>
-    and we’ll pretend lag is the problem.
-    <br><br>
-    Valentine duo? 😌🎮
-  </p>
-
-  <div class="btn-row">
-    <button id="yes">Yes 💞</button>
-    <button id="no">No 🙄</button>
+      <div class="btn-row">
+        <button id="yes">Yes 💞</button>
+        <button id="no">No 🙄</button>
+      </div>
+    </div>
   </div>
-
-</div>
-
 
   <!-- FINAL -->
   <div id="final" class="screen card">
     <img class="frog" src="https://i.imgur.com/4AiXzf8.png" alt="cute frog">
-    <h1>LET’S GOOO 🥹</h1>
+    <h1>LET’S GOOO!</h1>
     <p>
-      Frog approved ✔️<br><br>
-      Looks like it’s official —
-      duo queue with good vibes,
-      bad aim,
-      and elite company.
+      Looks like it’s official.
       <br><br>
-      Valentine secured 💗🎮
+      Good vibes, bad aim,
+      and a duo I wouldn’t trade
+      for anything :3
     </p>
   </div>
 
